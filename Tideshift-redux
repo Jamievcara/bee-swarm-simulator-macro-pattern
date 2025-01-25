@@ -1,0 +1,93 @@
+;FUNCTION CREATED BY KURUNI PATTERN CREATED BY JAMIEVCARA
+;@NoInterrupt
+CameraRot(Dir, Num) {
+	Static rot := false
+	Static LRNum := 0
+	Static LRDir := "Right"
+	Init := OnExit((*) => rot && send("{" Rot%LRDir% " " Abs(LRNum) "}"), -1) 
+	send "{" Rot%Dir% " " Num "}"
+	rot := (dir = "Up" || dir = "Down" || dir = "Left" || dir = "Right")
+	if (Dir="Left" || Dir="Right") {
+		LRNum := (Dir="Left") ? LRNum+Num : LRNum-Num
+		LRDir := (LRNum<0) ? "Right" : "Left"
+	}
+}
+;function created by Kuruni and SP
+
+Move(Dir, Dis, Dir2:="") {
+	DirType := (Dir2!="")
+	send "{" Dir " down}"
+	if (DirType)
+		send "{" Dir2 " down}"
+	Walk(Dis)
+	send "{" Dir " up}"
+	if (DirType)
+		send "{" Dir2 " up}"
+}
+
+loop reps {
+    Move("s", 6)
+    Move("d", 2)
+    Move("s", 3)
+    Move("s", 4, "d")
+    Move("d", 4)
+    Move("w", 10, "a")
+    Move("s", 1.75)
+    Move("s", 3, "d")
+    Move("w", 7, "d")
+    CameraRot("Left", 2), HyperSleep(20)
+    Move("w", 5, "a")
+    Move("d", 5)
+    Move("s", 5, "a")
+    Move("w", 5)
+    Move("s", 5, "a")
+    Move("w", 5)
+    CameraRot("Right", 1)
+    Move("w", 3)
+    Move("d", 5)
+    Move("s", 5, "a")
+    Move("d", 5)
+    CameraRot("Right", 1)
+    Move("s", 3)
+    Move("s", 3, "a")
+    Move("w", 3)
+    Move("w", 3, "a")
+    Move("s", 5)
+    Move("d", 6, "w")
+    Move("a", 6)
+    Move("s", 1.75, "a")
+    Move("s", 4, "d")
+    Move("w", 1.75)
+    CameraRot("Left", 1)  
+    Move("w", 3)
+    Move("d", 5)
+    Move("s", 5, "a")
+    Move("d", 5) 
+    CameraRot("Right", 1)
+    Move("s", 3)
+    Move("s", 3, "a")
+    Move("w", 3)
+    Move("w", 3, "a")
+    Move("s", 5)
+    Move("d", 6, "w")
+    Move("a", 6)
+    Move("s", 1.75, "a")
+    Move("s", 4, "d")
+    Move("w", 1.75)
+    CameraRot("Left", 1)  
+    Move("w", 3)
+    Move("d", 5)
+    Move("s", 5, "a")
+    Move("d", 5)
+    CameraRot("Right", 1)
+    Move("s", 3)
+    Move("s", 3, "a")
+    Move("w", 3)
+    Move("w", 3, "a")
+    Move("s", 5)
+    Move("d", 6, "w")
+    Move("a", 6)
+    Move("s", 1.75, "a")
+    Move("s", 4, "d")
+    Move("w", 1.75)
+}
